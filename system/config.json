@@ -1,0 +1,7 @@
+{
+    "embedding_model"    : "nomic-embed-text",
+    "llm_model"          : "qwen2.5:7b-instruct",
+    "document_directory" : "./documents",
+    "show_source"        : false, 
+    "verbose"            : false
+}
