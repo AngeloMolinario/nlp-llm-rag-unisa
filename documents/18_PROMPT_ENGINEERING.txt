@@ -1,0 +1,125 @@
+Prompt Engineering | prompt engineering, optimization, question answering, reasoning, domain knowledge |
+Prompt engineering is a relatively new discipline focused on developing and optimizing prompts to effectively use large language models (LLMs) for diverse applications and research areas.
+The goals of prompt engineering are to deepen the understanding of LLM capabilities and limitations, enhance their performance across various tasks like question answering and arithmetic reasoning, facilitate seamless integration with external tools, and unlock new functionalities by incorporating domain knowledge and external resources.
+
+Writing Good Prompts | prompt engineering, good prompt, prompt design, clear instruction, specific instruction, example, task efficiency, bad prompt, example, prompt structure |
+Start with simple prompts, adding elements gradually while iterating and refining to improve results.  
+Use clear and specific instructions such as "Write", "Classify", or "Summarize" at the beginning of prompts.  
+Be detailed and descriptive to achieve better outcomes.  
+Consider using examples to guide the model’s output.  
+Balance detail and length carefully, as excessive information can reduce effectiveness.  
+Examples of prompts:
+Bad prompt: "Summarize this article."  
+Good prompt: "Generate a 100-word summary of this research article, focusing on the main findings."  
+Bad prompt: "Write an apology email to a client."  
+Good prompt: "Write a professional email to a client apologizing for a delayed shipment, offering a discount, and providing an updated delivery estimate." 
+Bad prompt: "Tell me about exercise benefits."  
+Good prompt: "List five health benefits of regular exercise, each with a short explanation of how it improves well-being." 
+
+Elements of a Prompt | prompt engineering, instruction, context, input, output indicator, structured prompt, elements of a prompt |
+A well-structured prompt typically consists of several key elements that help guide the model’s response effectively. First, it includes an instruction, which clearly defines the specific task or action the model is expected to perform. Additionally, context may be provided to supply relevant background information or external details that can refine and steer the model’s output. The prompt also incorporates input data, representing the actual question or content for which a response is required. Finally, an output indicator is often specified to establish the desired format or type of response, ensuring that the model’s answer aligns with the intended use case.
+Example:
+"
+Classify the text into neutral, negative, or positive. (Instruction)
+Text: I think the vacation is okay. (Input)
+Sentiment: (Output indicator)
+"
+
+In-Context Learning | prompt engineering, in-context learning, task demonstration, input-output pair, step-by-step instruction, reference, structured prompt, example |
+In-context learning refers to an LLM’s ability to perform a task by interpreting and utilizing the information provided within a prompt, without requiring any modifications to its internal parameters. This means that rather than retraining the model, users can guide its behavior simply by structuring the prompt effectively.
+To achieve this, a prompt may include various forms of contextual information. For instance, it can provide reference material, such as specific texts or datasets, that the model should use to generate its response. Additionally, input-output pairs can be incorporated to serve as examples, helping the model recognize patterns and produce more accurate results. A prompt may also contain step-by-step instructions, outlining the process required to complete the task in a structured manner. In cases where ambiguity could arise, clarifications can be added to ensure precise interpretation. Finally, templates with predefined structures or placeholders can help standardize responses, making them more consistent and aligned with specific requirements.
+
+Prompts and NLP Tasks | prompt engineering, text summarization, information extraction, question answering, code generation, logical reasoning |
+Prompts can be structured to support a variety of natural language processing (NLP) tasks, making them versatile tools for guiding large language models (LLMs) in different applications. One common use is text summarization, where a well-crafted prompt helps the model condense lengthy content into a concise and meaningful summary while preserving key information. Similarly, prompts can facilitate information extraction, allowing the model to identify and retrieve specific details, such as names, dates, or relationships, from a given text. Another essential application is question answering, where prompts instruct the model to generate accurate and contextually relevant responses based on the provided query. Additionally, prompts can be used for code generation, enabling LLMs to produce functional code snippets based on natural language descriptions. While LLMs also show promise in reasoning tasks, such as logical inference and problem-solving, this remains a complex challenge, requiring refined prompt engineering techniques to improve consistency and reliability. By carefully designing prompts, users can enhance the model’s ability to perform these tasks with greater accuracy and efficiency. However, an LLM may still fail to meet human expectations when faced with tasks that are too complex or highly logical. Logical tasks, such as solving mathematical proofs or multi-step reasoning problems, require strict rule adherence and step-by-step deductions, which LLMs may struggle to execute reliably.
+
+System Prompts | prompt engineering, system prompt, assistant behavior, configuration, instruction |
+A system prompt is a configuration provided to an AI model before any user interactions take place. This configuration establishes the assistant's behavior, context, tone, and any special instructions that define how it should operate. It also guides the model on how to respond and what it should focus on when generating its outputs.
+System prompts allow the AI to follow predefined rules and maintain consistency in its responses. They ensure that the model adheres to specific guidelines and provides answers that align with the intended purpose.
+For example, a system prompt can instruct the AI to act as a helpful and knowledgeable assistant who answers questions accurately and concisely. Another example is a system prompt that configures the AI as an IT support assistant specializing in troubleshooting software and hardware issues, ensuring that it responds politely and provides users with step-by-step solutions. Additionally, a system prompt can define the AI as a friendly and engaging assistant that responds in a warm and conversational tone, making interactions lighthearted and approachable.
+
+Zero-Shot Prompting | zero-shot, no example, classification, direct instruction |
+A zero-shot prompt interacts with the model without including examples or demonstrations.  
+Example: "
+Classify the text into neutral, negative, or positive.  
+Text: I think the vacation is okay.  
+Sentiment:
+Output: Neutral
+"
+
+Few-Shot Prompting | few-shot, in-context learning, demonstration, example, pattern recognition, generalization |
+Few-shot prompting allows in-context learning by including examples or demonstrations.  
+Example: "
+A 'whatpu' is a small, furry animal native to Tanzania. An example of a sentence that uses the word 'whatpu' is: We were traveling in Africa, and we saw these very cute whatpus. 
+To do a "farduddle" means to jump up and down really fast. An 
+example of a sentence that uses the word farduddle is:
+Output:  When we won the game, we all started to farduddle in 
+celebration." 
+Few-shot Prompting is effective for many tasks but remains limited when handling complex reasoning tasks.
+
+Chain-of-Thought Prompting | chain-of-thought, few-shot, step-by-step reasoning, intermediate step, complex reasoning, enhanced reasoning |
+Chain-of-Thought is an approach in which few-shot prompting is enhanced with step-by-step reasoning. It is particularly useful in tasks that require complex reasoning. This method allows the model to break down problems into intermediate reasoning steps, leading to more accurate and well-structured responses.
+
+Self-Consistency Prompting | self-consistency, consistency, multiple response, reliability, frequent answer, error reduction |
+Self-consistency prompting is an effective technique within this framework that enhances the reliability of a language model’s responses. Instead of accepting the first response generated by the model, this method involves repeatedly asking the same question multiple times. By doing so, the model explores different reasoning paths and generates a variety of possible answers. In fact, the prompt used follows the Chain-of-Thought approach. Once multiple responses have been produced, the most frequently occurring answer is selected as the final output excluding the related reasoning. This approach strengthens the consistency of the model’s reasoning by identifying the most reliable response while reducing the likelihood of errors or inconsistencies.
+
+Meta Prompting | meta prompting, structured guidance, logical steps, problem-solving framework, reasoning strateg, generalize problem-solving |
+Meta prompting is a technique designed to guide a language model through a structured reasoning process without relying on specific content-based examples. Instead of providing direct examples, the model is prompted to follow logical steps that lead to the solution of a problem. This approach enhances the model’s ability to generalize problem-solving strategies rather than depending on predefined patterns.
+As an example, solving a quadratic equation is broken down into sequential steps. The model first identifies the correct formula, applies the quadratic formula, calculates the discriminant, solves for the variable, verifies the solution, and summarizes the results. This structured breakdown ensures that each step is logically followed, making the process more reliable.
+
+Task-Agnostic Meta Prompting | task-agnostic, generalized reasoning, reasoning, structured response, coheren |
+Task-agnostic meta prompting relies on asking the model to a step-by-step reasoning process without specifying the content of each step. The objective is to encourage the model to generate structured responses that are coherent and well-explained. The prompt is general and is suitable for a wide range of tasks rather than being limited to a specific one.
+Practical example: 
+The approach begins with an explicit instruction to think step by step. The reasoning is then broken down into individual steps, ensuring that the model logically processes the problem. Finally, the answer is encapsulated in a formatted output, such as a LaTeX-formatted box. By following this method, the model can generate responses that maintain a structured flow, improving clarity and logical progression.
+
+Meta Meta Prompting | meta-meta prompting, meta prompt, meta prompt executor, automation, adaptability, consisten |
+Meta meta prompting builds on meta prompting by enabling a language model to generate structured prompts that guide task resolution. Instead of directly solving a task, the model first constructs a meta prompt, which is then processed by a meta prompt executor to reach a solution. This approach enhances automation and refinement in prompt generation, improving adaptability and consistency in complex problem-solving.
+Practical example: 
+An example of meta meta prompting involves generating a structured prompt for solving a differential equation. The meta prompt instructs the model to first identify the type of equation, then apply the appropriate mathematical method, work through the solution in a step-by-step manner, verify the result, and summarize the final solution.
+This approach ensures that the solution process remains structured and adheres to a logical flow. By breaking down the solution into well-defined steps, the model is guided towards generating responses that are both accurate and explainable.
+
+Prompt Chaining | prompt chaining, multiple stage, iterative, complex quer, document-based, information retrieval |
+Prompt chaining is a technique used when a single prompt is insufficient to process a complex query. Instead of attempting to obtain a final result in one step, the task is divided into multiple stages, each addressed by a separate prompt.
+Initially, the process begins with a base prompt that only covers the first part of the task. The output from this stage is then used as input for the next prompt, continuing iteratively until the final answer is reached. The output is formed by combining the user's question and the model's response. This method is particularly useful for tasks such as document-based question answering, where different prompts handle various aspects of retrieving and processing information.
+
+Role Prompting | role prompting, role, contextual response, context, adaptability |
+Role prompting is a method where the language model is instructed to assume a specific role to generate responses that align with a particular perspective. By defining a role, the model can adjust its tone, style, and depth of information to better fit the intended context.
+For example, if the model is asked to write a review, the response will differ based on whether it is written as a general user, a professional food critic, or a marketing expert. Similarly, in professional communication, a message drafted by a customer service representative will be structured differently from one written by a business strategist. This technique enhances the adaptability of language models in various applications.
+
+Structured Prompting | structured prompting, format, delimiter, co-star |
+Structured prompting involves defining a clear format for a prompt to improve the predictability of the model's responses. The structure is encoded using sections and scripts, allowing the model to interpret and organize its output in a meaningful way.
+A key aspect of structured prompting is the use of delimiters. Unique character sequences, such as special symbols or XML tags, help the model recognize distinct units of meaning. Since language models are often trained on web content, they can effectively process information formatted with structured elements, ensuring better organization in their responses.
+Example of framework for structured prompting: 
+The CO-STAR framework provides a structured approach to prompt design by dividing the prompt into six key sections. The context provides background information to help the model understand the task. The objective defines what the model is expected to accomplish. The style specifies the preferred writing format. The tone adjusts the sentiment or emotional aspect of the response. The audience determines the target readership, such as experts, beginners, or general users. Finally, the response section defines the output format, ensuring that the generated answer is compatible with subsequent steps.
+
+Generate Knowledge Prompting | generate knowledge, background information, model expansion, contextual answer, informed answer |
+Generate knowledge prompting is a technique that first instructs the model to generate relevant background knowledge before answering a specific question. This approach is particularly useful when the model lacks sufficient information to respond directly.
+By incorporating generated knowledge into the prompt, the model can provide more informed and contextually relevant answers. This method leverages the model’s ability to expand upon its base knowledge, allowing it to integrate additional reasoning into its responses.
+
+Retrieval-Augmented Generation | rag, retrieval system, knowledge integration, relevant document, document search, hybrid model |
+Retrieval-Augmented Generation, commonly referred to as RAG, is a technique that enhances language model responses by integrating retrieval mechanisms with text generation. This approach addresses the limitations of language models in accessing updated or domain-specific data.
+In RAG, a retrieval system searches for relevant documents or information based on the input query. The retrieved content is then used as contextual information to guide the model’s response. This combination allows the model to generate more accurate and context-aware answers while overcoming knowledge limitations that exist in purely generative models.
+
+Prompt Engineering Guide | prompt engineering, guide, ai prompting, tree of thoughts, automatic prompt engineer, active-prompt, chain-of-thought, self-verification, memory-of-thought, contextual awareness |
+AI prompting techniques enhance reasoning, adaptability, and interaction. The Tree of Thoughts structures problem-solving, while Automatic Reasoning and Tool-use integrate external tools for better-informed responses. Automatic Prompt Engineer refines prompts autonomously, and Active-Prompt adjusts outputs dynamically. Directional Stimulus Prompting ensures precise guidance, while Program-Aided Language Models bring structured programming into AI.
+Few-shot and zero-shot learning influence how much context AI needs. Chain-of-Thought improves logical consistency, while self-criticism mechanisms like Self-Verification reduce errors. Memory-of-Thought and Active-Prompt enable continuity in interactions. These advancements make AI more effective, self-correcting, and responsive in complex tasks.
+
+Prompt Testing | prompt testing, evaluation, model optimization, fine-tuning, interactive tool, evaluate prompt |
+Experimenting with different prompts is essential for optimizing the responses generated by language models. Testing allows for iterative adjustments, helping to identify the most effective structure and wording to achieve precise and contextually appropriate results. Through systematic testing, users can refine prompts to enhance the accuracy, coherence, and relevance of responses across different applications.
+Prompt testing tools simplify this process by providing an interface to create, modify, and evaluate prompts efficiently. These tools also offer settings to control the model’s behavior, such as adjusting output style, tone, and precision. By leveraging these features, users can develop more effective interactions with language models.
+Several tools are available for prompt testing. OpenAI Playground supports GPT models, allowing users to experiment with different prompts in an interactive environment. Google AI Studio provides access to Google Gemini models, enabling prompt customization and evaluation. LM Studio is another option that supports Hugging Face models, offering local deployment for testing language models on personal devices.
+
+LLM Settings | temperature, randomness, top p, nucleus sampling, max length, response diversity |
+When designing prompts, interacting with a language model via an application programming interface allows users to fine-tune various parameters that influence the model’s responses. Adjusting these settings provides control over factors such as creativity, response length, and repetition, ensuring that the generated output aligns with specific requirements.
+Temperature is a parameter that controls the level of randomness in responses. Lower values produce more deterministic and factual outputs, making them suitable for precise tasks. Higher values introduce variability, allowing for more creative and diverse responses, which is useful for applications such as poetry or storytelling.
+Top P, also known as nucleus sampling, determines the diversity of responses by limiting token choices based on their probability threshold. Lower values constrain the model to select the most probable tokens, ensuring higher precision. Higher values increase the variety of responses by allowing less probable tokens to be included, making the output more diverse.
+Max length sets a token limit for responses, helping to manage the length and cost of generating content. This parameter ensures that responses remain concise when needed while allowing flexibility for more detailed explanations when necessary.
+
+Additional LLM Settings | stop sequence, frequency penalty, response format, presence penalty, output format |
+Further customization of model behavior is possible by adjusting additional parameters. Stop sequences define specific points where a response should terminate. This setting is useful for structuring responses and preventing unnecessarily long outputs.
+The frequency penalty reduces repetition by discouraging the overuse of frequently appearing words. This helps in generating more varied and natural language responses. The presence penalty encourages diversity by applying a penalty to repeated tokens, promoting a wider range of vocabulary in the generated text.
+Response format determines the expected output structure, which can be formatted as text, JSON, or other structured formats. This setting is particularly useful for applications that require machine-readable outputs.
+
+LM Studio | lm studio, llm development, offline testing, hugging face, model management, deployment |
+LM Studio is a desktop application designed for local language model development and experimentation. It provides a user-friendly environment for running and testing models on personal devices without requiring cloud-based services. This capability allows for greater control over model deployment and customization.
+The application offers several key functionalities. It enables users to search for and download models directly from Hugging Face. LM Studio also supports running models locally, reducing reliance on external servers and enhancing data privacy.
+An interactive chat interface allows users to test prompts and fine-tune responses in real-time. The application also includes a local API server, which facilitates the integration of language models with external applications. Additionally, model management tools help organize and configure different models, streamlining the development process.

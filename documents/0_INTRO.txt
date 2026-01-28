@@ -1,0 +1,71 @@
+Introduction to the LLM and NLP course at the university of salerno (UNISA) |UNISA, course, teacher, name, DIEM|
+The Natural Language Processing (NLP) and Large Language Models (LLMs) course is part of the Master's Degree in Computer Engineering at the University of Salerno, also known by its acronym UNISA. It is taught by Nicola Capuano and Antonio Greco from the DIEM department. The course provides theoretical, methodological, technological, and practical knowledge on automatic language and text understanding. It situates Large Language Models (LLMs) within the broader Natural Language Processing (NLP) framework, highlighting their innovative paradigms and modern applications. The course focuses on Natural Language Processing (NLP) and Large Language Models (LLMs), providing students with a comprehensive understanding of how machines process, understand, and generate human language. It covers foundational NLP concepts such as tokenization, word embeddings, and text classification, as well as advanced topics like neural networks (e.g., RNNs, LSTMs) and Transformer-based models. Students will explore prompt engineering, which involves crafting effective inputs to guide LLMs, and fine-tuning techniques to adapt pre-trained models for specific tasks. The course also delves into practical applications, such as text generation, translation, and building chatbots. The learning approach is hands-on, with students expected to design and implement NLP systems, based on LLMs, using modern tools and frameworks. The course aims to equip students with both theoretical knowledge and practical skills to work with cutting-edge NLP technologies.
+
+Course Objectives and Topics |course detail, course topic, Course Objective|
+The main topic of the nlp and llm course and the main objective are
+1. Basic Concepts of NLP
+    - NLP tasks, evolution, and applications
+    - Tokenization
+    - Stemming and Lemmatization
+    - Bag of Words and N-Grams
+    - Similarity measures
+    - Word embeddings
+    - TF-IDF vectors
+2. Classification and Clustering Techniques
+    - Classification techniques
+    - Clustering of text
+3. Neural Networks in NLP
+    - Application of CNNs (Convolutional Neural Networks) in text analysis
+    - Recurrent Neural Networks (RNNs) models
+    - LSTM (Long Short-Term Memory) models
+4. Advanced NLP Techniques
+    - Named Entity Recognition (NER)
+    - Question Answering
+5. Transformer Models
+    - Self-attention mechanism in transformers
+    - Multi-head attention in transformers
+    - Positional encoding in transformers
+    - Masking in transformers
+    - Encoder and decoder components of a Transformer
+6. Practical Applications and Tools
+    - Introduction to Hugging Face
+    - Training of an LLM
+    - Zero-shot prompting
+    - Few-shot prompting
+    - Chain-of-thought prompting
+    - Self-consistency prompting
+    - Generated knowledge
+    - Prompt chaining
+    - ReAct (Reasoning + Acting)
+    - Retrieval Augmented Generation (RAG)
+7. Fine-Tuning Techniques
+    - Feature-based fine-tuning
+    - Parameter-efficient fine-tuning (PEFT)
+    - Low-Rank Adaptation (LoRA)
+    - Reinforcement Learning with Human Feedback (RLHF)
+      - Concept of RLHF and how it's applied to LLMs
+
+Exam |project work, exam, oral, grade, course|
+The exam includes a project work where students apply their knowledge to a real-world problem, followed by an oral exam to discuss their work. The project work is a collaborative effort, requiring each group to develop a chatbot designed to answer questions related to the NLP and LLM 2024/2025 course. The chatbot should provide relevant responses to queries about course content, including lecturers, schedules, and suggested books, while strictly avoiding out-of-context topics. To achieve this, students are encouraged to utilize any tools studied during the course, provided they fully understand their structure, size and behavior. Alongside the chatbot, a detailed report must be submitted, explaining the chosen approach and implementation. The chatbot will be evaluated based on relevance (how well it answers queries), fluency (clarity and grammatical correctness), coherence (logical consistency), robustness (resistance to misleading prompts), and precision (ability to reject out-of-context questions).
+The oral examination will assess the theoretical knowledge acquired throughout the course, the ability to justify design choices made in the project work, and the capacity to answer questions on specific topics covered in the lectures. The final grade will be determined as the average of the scores obtained in both assessments.
+
+Class Schedule |schedule, course, time, place, held|
+The weekly schedule for Natural Language Processing and Large Language Models includes two lessons held in different locations.
+On Wednesday, from 12:30 PM to 2:30 PM, a class takes place in Lab T25, located in Building E.
+On Thursday, from 4:30 PM to 6:30 PM, a class is held in Room D of Building E1.
+
+Antonio Greco |Antonio Greco, teacher, referent, instructor, course|
+Professor Antonio Greco is a researcher at the University of Salerno (DIEM), specializing in computer vision and pattern recognition. His work focuses on real-time AI algorithms for gender recognition, age estimation, emotion analysis, and anomaly detection.
+Professor Antonio Greco is the teacher of the nlp and llm course at unisa and he cover the second part of the course.
+His email and his associates' phone number are agreco@unisa.it and 089963003.
+
+Nicola Capuano |Nicola Capuano, teacher, referent, instructor, course|
+Professor Nicola Capuano is an Associate Professor at the University of Salerno (DIEM department). His research focuses on Natural Language Processing, Machine Learning, Knowledge Representation, and AI in Education.
+Professor Nicola Capuano is the teacher of the nlp and llm course at unisa and he cover the first part of the course.
+His email and his associates' phone number are ncapuano@unisa.it and 089964292.
+
+
+Course material |materials, book, reference|
+The materials for the course of nlp and llm held at unisa are:
+- The book : "H. LANE, C. HOWARD, H. M. HAPKE: NATURAL LANGUAGE PROCESSING IN ACTION - UNDERSTANDING, ANALYZING AND GENERATING TEXT WITH PYTHON, MANNING"
+- Additiona material : E-learning platform (https://elearning.unisa.it), in the dedicated section of the course.

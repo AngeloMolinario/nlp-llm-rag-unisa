@@ -1,0 +1,48 @@
+Word Embeddings |word, embedding, vector representation, one-hot vector, vector space|
+Word embeddings, also known as word vectors, offer a more sophisticated approach to representing words. They are dense vectors, with dimensions much smaller than the vocabulary size, and reside in a continuous vector space. Unlike the one-hot vectors used in Bag-of-Words models, which do not capture semantics and are computationally inefficient due to their sparsity, word embeddings are generated so that words with similar meanings are close to each other in the vector space. In BoW models, instead, the distance between any two different words is always equal, regardless of their meaning. The position of a word vector in this space represents the semantics of the word. Consequently, words like 'king' and 'queen', or 'apple' and 'banana', are close in vector space, reflecting their semantic similarity.
+
+Properties of Word Embeddings |word embeddings, arithmetic, semantic, queries|
+Word embeddings have the remarkable ability to enable semantic text reasoning through vector arithmetic. For example, subtracting the vector for 'royal' from 'king' results in a vector close to 'man', while subtracting 'royal' from 'queen' results in a vector close to 'woman'. Furthermore, operations like king - man + woman result in a vector close to queen. These embeddings facilitate semantic queries, allowing the system to search for words by interpreting the semantic meaning of a query. For example, a query like "Famous European woman physicist" can be used to obtain vectors representing Marie_Curie or Lise_Meitner. Similarly, analogies can be solved by leveraging the semantic relationships of the vectors.
+
+Word2Vec |word2vec, generate, word embedding|
+Word2Vec, introduced by Google in 2013, is a methodology for generating word embeddings based on neural networks using unsupervised learning on a large, unlabeled text corpus. The central idea is that words with similar meanings often appear in similar contexts. A "context" is defined as a sequence of words within a sentence. For example, given the sentence "Apple juice is delicious", if we remove the word "apple", terms like "banana" or "pear" could be suitable replacements, indicating their semantic similarity to "apple".
+
+Continuous Bag-of-Words (CBOW) |word2vec, embedding, predict, word|
+Continuous Bag-of-Words (CBOW) is a neural network-based method used to train word embeddings, specifically in the Word2Vec model. It learns to predict a target word based on its surrounding context.
+In CBOW, the input and output sizes are both equal to the number of tokens in the vocabulary. The model is trained to predict the central word given a context window of m surrounding words. The input to the network is the sum of the one-hot vectors of the surrounding words, while the output is a probability distribution over the vocabulary, where the highest probability corresponds to the most likely missing word.
+After training, the output layer is discarded, and the weights connecting the input layer to the hidden layer are retained. These weights serve as word embeddings, capturing the semantic meanings of words. The word embedding dimension is equal to the number of neurons in the hidden layer. Since tokens are converted into one-hot vectors, each row in the weight matrix corresponds to a unique word in the vocabulary, effectively representing the learned embeddings.
+
+Skip-Gram |word2vec,generate word embedding, predict, word, Skip-Gram|
+Skip-Gram is a neural network-based method used to train word embeddings, specifically in the Word2Vec model. It learns to predict the surrounding words given a central word.
+In Skip-Gram, the input to the network is the one-hot vector of the central word, and the model is trained to predict a single surrounding word at a time. A training iteration is performed for each word in the context window of size m. The network structure consists of an input layer, a hidden layer with n neurons (where n is the word embedding dimension), and an output layer with a softmax activation function. The softmax function ensures that the output represents a probability distribution, where the sum of all probabilities equals 1.
+Similar to CBOW, after training, the output layer is discarded, and the weights connecting the input layer to the hidden layer are retained. These weights serve as word embeddings, effectively capturing the semantic relationships between words in the vocabulary.
+
+CBOW vs Skip-Gram |word2vec,difference, cbow, skip-gram|
+CBOW tends to achieve higher accuracy for frequent words and is faster to train, making it suitable for large datasets. Skip-gram, on the other hand, works well with smaller corpora and rare terms.
+
+Dimension of Embeddings |word2vec, generate word embedding|
+The dimension 'n' of word embeddings should be large enough to capture the semantic meaning of the tokens but not so large that it results in excessive computational cost.
+
+Improvements to Word2Vec |word2vec, generate word embedding, biagram, negative sampling|
+Several improvements have been introduced to enhance the performance of Word2Vec models. These include: 
+Frequent Bigrams: To improve the accuracy of word embeddings, frequent bigrams and trigrams are included as terms in the vocabulary. These are identified using a scoring function based on co-occurrence frequency.
+Subsampling of Frequent Tokens: To reduce the emphasis on common words, such as stop words, words are sampled during training in inverse proportion to their frequency. The effect is similar to the IDF effect in TF-IDF.
+Negative Sampling: Instead of updating all weights for each training example, 5 to 20 negative words (words not in the context) are selected, and weights are updated only for the negative words and the target word. Negative words are chosen based on their frequency. 
+
+Alternatives to Word2Vec |word2vec, word2vec python, word2vec implementation|
+GloVe (Global Vectors for Word Representation), introduced by researchers at Stanford University in 2014, uses classical optimization methods like Singular Value Decomposition instead of neural networks. GloVe offers comparable precision to Word2Vec but has significantly faster training times and is effective on small corpora.  FastText, introduced by Facebook researchers in 2017, is based on sub-words and predicts the surrounding n-character grams rather than the surrounding words. This makes FastText particularly effective for rare or compound words, able to handle misspelled words, and is available in 157 languages.
+Static Embeddings Word2Vec, GloVe, and FastText are examples of static embeddings. Each word is represented by a single static vector that captures the average meaning based on the training corpus, and the vectors do not change based on context. This is a disadvantage as it does not account for polysemy and homonymy; a word like "apple" can refer to the fruit, the tech company, or even a song, but static embeddings blend all meanings into a single vector.
+
+Other Issues of word embeddings |word2vect, word2vec problem, static embedding|
+Static embeddings are limited by other issues:
+Semantic Drift: The meanings of words change over time, which static embeddings do not account for.
+Social Stereotypes: Word embeddings can perpetuate societal biases present in the training data.
+Out-of-Vocabulary Words: Traditional embeddings cannot handle words not present in the training data.
+Lack of Transparency: It can be difficult to interpret the meaning of individual dimensions or word vectors, making it hard to analyze, improve the model, ensure its fairness, and explain its behavior.
+
+Contextual Embeddings |contextual, word, word2vec|
+Contextual embeddings can be updated based on the context of surrounding words, making them effective for applications that require a deep understanding of language, like "not happy" is closer to "unhappy" than in static embeddings.
+Examples of contextual embeddings include ELMo (Embeddings from Language Model) and BERT (Bi-directional Encoder Representations for Transformers), and many other transformer-based methods.
+
+Working with Word Embeddings |wordvec, word embedding, word2vec implementation, word2vec python|
+Word embeddings can be loaded using popular Python libraries like Gensim. Gensim supports various pre-trained models, or you can import custom models. After loading, you can compute the similarity between words, perform operations on word vectors, and use them for various NLP tasks, such as document similarity. When working with word embeddings, you should check if a token is present in the vocabulary before using it. FastText can be used to generate embeddings for unknown words by treating each word as an aggregation of sub-words and generating embeddings based on the morphological structure of the word. SpaCy also uses word vectors behind the scenes and provides document similarity methods based on averaging word vectors.

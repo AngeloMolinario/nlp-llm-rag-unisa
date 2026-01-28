@@ -1,0 +1,50 @@
+Types of Conversational AI |conversation, chit, chat, tod system|
+Conversational AI is divided into two main categories: chit-chat systems and Task-Oriented Dialogue (TOD) systems. Chit-chat systems do not have a specific goal but focus on generating natural responses to maintain a fluid conversation. In these systems, the more conversational exchanges, the better. In contrast, TOD systems are designed to help users achieve a specific goal. Their effectiveness is measured by their ability to understand user intent, track the state of the conversation, and generate appropriate actions to meet user needs, minimizing conversational exchanges. Examples of TOD systems include chatbots for bookings, customer support, and recommendations.
+
+Architecture of a TOD System |conversational ai, tod, tod system|
+A typical TOD system includes several key components. Natural Language Understanding (NLU) is essential for interpreting user input. This process involves two main tasks: intent classification and entity recognition. Intent classification is treated as a multi-label sentence classification problem, while entity recognition uses techniques such as Named Entity Recognition (NER), which can be rule-based or machine learning-based. An important aspect is conversation design, which involves planning the types of interactions the assistant will handle. This includes identifying users, understanding the assistant's purpose, and documenting typical conversations. It is crucial to start with hypothetical conversations but move to real conversations as soon as possible to improve system performance.
+
+Introduction to Rasa |conversational ai, tod system, rasa, overview|
+Rasa is an open-source framework for conversational AI, launched in 2016 and used globally to create thousands of chatbots in different languages. Rasa provides basic units for building dialogue systems, including:
+- Intents: represent what the user wants to achieve.
+- Entities: are terms or objects relevant to the intent.
+- Actions: what the bot does in response to intents.
+- Responses: predefined expressions.
+- Custom actions: custom Python code to interact with external systems.
+- Slots: variables to store information extracted from user input.
+- Forms: sets of slots to collect more information in a structured way.
+- Stories: sequences of user intents and bot actions.
+Rasa also includes additional features such as lookup tables, explicit synonyms, and regex patterns, which enhance its ability to recognize and process user input more accurately.
+Rasa offers a robust framework for creating task-oriented dialogue systems. By effectively using the components and configurations described, developers can create conversational agents capable of understanding user intent, managing dialogue flow, and performing complex actions. The combination of NLU techniques, dialogue management, and custom actions provides the flexibility needed to create highly adaptable and functional chatbots.
+
+Structure of a Rasa Project |conversational AI, TOD system, RASA, RASA project, yml file, file, structure|
+In a Rasa project, most information is stored in YAML files, while Python code is used for more complex actions. The structure of a project includes important files such as:
+- domain.yml: the main file listing all intents, entities, slots, responses, forms, and actions.
+- nlu.yml: defines intents, entities, and provides training data for the NLU model.
+- stories.yml: defines general stories for training the model.
+- rules.yml: defines short and deterministic conversation paths.
+- config.yml: defines the NLU pipeline and dialogue policies.
+- credentials.yml: contains credentials for external platforms.
+- endpoints.yml: lists endpoints the bot can use.
+When a user starts a new interaction after the previous session expires, data from the previous session can be transferred to the new session. It is essential to have at least 7-10 expressions per intent in the nlu.yml file to effectively train the model.
+
+Workflow with Rasa |conversational AI, TOD system, RASA, RASA python, RASA implementation, API, workflow|
+Using Rasa involves several commands. The "rasa train" command is used to train the model using NLU data and stories. The trained model is saved in the ./models directory. The "rasa shell" command loads a trained model and allows interaction with the assistant via the command line. The "rasa run" command starts a server with the trained model. For cross-origin calls, the "--cors "*"" flag is used. Rasa also provides a REST API, allowing external systems to send messages to the bot and receive responses. The webhook endpoint is reachable at "http://<host>:<port>/webhooks/rest/webhook". The request must be made using the POST method with JSON format; the bot's response will also be in JSON format. Additionally, Rasa supports web frontends, allowing the bot to be integrated into your website.
+
+Details of the Domain File |conversational AI, TOD system, RASA, RASA python, RASA implementation, domain file, domain.yml|
+The domain file defines everything the assistant "knows", including responses, intents, entities, and slots. Responses are the expressions the assistant can use with users. Intents are categories of user expressions. Entities are information extracted from text. Slots are variables stored during the conversation. Slots can be configured to influence the flow of the conversation and are generally linked to entities. Responses can include text, buttons, and images, with the rendering mode depending on the chosen channel. The domain file must match the intents in the NLU file. It is advisable to start with the smallest possible number of intents.
+
+Details of the NLU File |conversational AI, TOD system, RASA, RASA python, RASA implementation, nlu file, nlu.yml|
+The NLU file is intended for training the system to extract structured information from user messages. It includes examples of user expressions, classified by intents, and defines the entities involved. Additional information can be added via regular expressions, lookup tables, and synonyms. Custom entities can be extracted using regular expressions, lookup tables, or machine learning. Entity roles allow adding further details. It is good practice to start with the smallest possible number of intents and focus on the most common intents.
+
+Stories and Rules Files |conversational AI, TOD system, RASA, RASA python, RASA implementation, stories file, rules file, stories.yml, rules.yml|
+Stories are training data that teach the assistant what to do next. Start with the most common flows ("happy paths") and add errors and deviations. Interactive learning can be used to improve stories, and data from real conversations can be added once the model is in production. The rules file describes short and deterministic conversation paths and is not suitable for multi-turn interactions.
+
+Slots |conversational AI, TOD system, RASA, RASA python, RASA implementation, slot|
+Slots represent the assistant's memory, allowing important details to be stored and used later in the conversation. They can be configured to influence the flow of the conversation. Slot mappings define how slots are filled, and these mappings are applied after each user message. Mapping parameters can include conditions based on intents, non-intents, and entity roles. Slots can be used to create dynamic responses.
+
+Pipeline Configuration |conversational AI, TOD system, RASA, RASA python, RASA implementation, pipeline, classifier, policy|
+The config.yml file defines the NLU pipeline and dialogue policies used by Rasa. The pipeline specifies the sequence of components for processing user messages, including tokenizers, featurizers, classifiers, and entity extractors. Tokenizers break text into tokens. Featurizers convert tokens into numerical features. Classifiers determine user intent. Entity extractors identify named entities. Various tokenizers, featurizers, classifiers, and entity extractors are available, including those from SpaCy, such as the SpacyTokenizer, and machine learning-based options like the DIETClassifier. Training policies include the Rule Policy, Memoization Policy, and TED Policy. The Transformer Embedding Dialogue (TED) policy is a neural network architecture for predicting the next action.
+
+Custom Actions in RASA |conversational AI, TOD system, RASA, RASA python, RASA implementation, action|
+Custom actions are used to extend the assistant's capabilities and can be created using Python code. They can perform various tasks, such as sending emails, creating calendar appointments, retrieving data from a database, checking information from an API, and performing specific calculations. To use custom actions, the action server endpoint must be set in endpoints.yml, and the action server must be started with the "rasa run actions" command.

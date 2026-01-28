@@ -1,0 +1,36 @@
+Text Classification | text classification |
+Text classification is a fundamental task in Natural Language Processing (NLP) that involves assigning predefined categories to textual documents based on their content. This process is widely used for applications such as topic labeling, intent detection, and sentiment analysis. Unlike document classification, which may incorporate metadata, text classification relies solely on textual content. The approach is typically supervised, requiring a predefined set of classes, and contrasts with unsupervised techniques like clustering.
+Text classification is used in various applications, including topic labeling, sentiment analysis, spam filtering, and intent detection. It helps with language detection, content moderation, product categorization, and author attribution. Other key uses include content recommendation, ad click prediction, job matching, and legal case classification, making it essential for automating decision-making and organizing textual data across industries.
+
+Formal Definition of Text Classification | text classification, formal definition |
+Given:
+A set of documents D = ( d1, ..., dn )
+A set of predefined classes C = ( c1, ..., cm )
+Text classification finds a classifier function f where:
+f maps D × C to ( True, False )
+Function f assigns a Boolean value in ( True, False ) to each pair (di, cj) defined in D x C.
+
+Types of Text Classification | text classification, single-label, binary, multi-label, class |
+Text classification can be broadly categorized into three types, each serving different purposes. Single-label classification refers to scenarios where each document in D is assigned exactly to one class in C, ensuring a clear and mutually exclusive categorization. Binary classification is a special case of Single-label, where C has only two classes, in this case the classification task become a decision between a class and its complement. 
+In contrast, multi-label classification allows a document D to belong to multiple categories C simultaneously. This setting is often approached by reducing the problem to multiple binary classification subproblems, where each label is treated independently. The flexibility of multi-label classification makes it particularly relevant in domains such as news categorization, where articles often span multiple topics.
+
+Machine Learning-Based Classification | text classification, machine learning-based classification, vector | 
+A machine learning model is trained on a set of annotated text documents, each document of the training set is associated with one or more class labels. After training, the model can predict the category for a new document, more specifically it provides a confidence measure. To achieve this, a vector representation of documents, such as TF-IDF, must be used.
+
+Reuters Dataset | reuters, dataset |
+The "Reuters 21578" dataset is a widely used benchmark for text classification, characterized by its multi-class and multi-label structure. 
+It comprises a total of 90 distinct classes and is divided into a training set with 7,769 documents and a test set containing 3,019 documents. The length of documents varies significantly, with the number of words per document ranging from as few as 93 to as many as 1,263. 
+A notable characteristic of this dataset is its skewness. Some classes contain a substantial number of documents, exceeding 1,000, while others are highly underrepresented, with fewer than five documents. This class imbalance poses challenges for classification models, as they may struggle to learn meaningful representations for rare categories. 
+Most documents in the dataset are assigned to one or two labels. However, in certain cases, documents are associated with a much broader range of topics, with some being labeled under as many as 15 different categories.
+
+Testing Metrics | testing metric, micro average, macro average, weighted average, samples average |
+Evaluating the performance of a classification model involves different averaging techniques to compute metrics such as precision, recall, and F1-score. These techniques determine how the overall performance is measured across multiple classes or instances.
+Micro Average is calculated by aggregating the total number of true positives, false negatives, and false positives across all classes before computing the final metric. This approach treats all instances equally, making it useful in imbalanced datasets where frequent classes dominate the predictions. 
+Macro Average, on the other hand, computes the metric independently for each class and then takes the unweighted mean across all classes. Unlike micro averaging, this approach does not consider class frequencies, which means it gives equal importance to both frequent and rare classes. However, it may underestimate the performance in highly imbalanced datasets.
+Weighted Average refines the macro average by incorporating class support, which is the number of true instances in each class. This ensures that classes with more samples contribute proportionally to the final score, balancing the impact of both frequent and rare classes.
+Samples Average is an approach specifically useful in multi-label classification problems. Instead of computing the metric at the class level, it calculates the average metric across individual instances, considering the multiple labels that may be assigned to each instance. This approach can be used when instances belong to multiple categories simultaneously, as it better captures per-instance classification performance.
+
+Sentiment Analysis | sentiment analysis, imdb, dataset, sentiment |
+Sentiment analysis is a text classification problem that focuses on identifying and categorizing opinions expressed in a given piece of text. This task involves classifying a text as expressing a positive, negative, or neutral sentiment. One practical application of sentiment analysis is in domains like business, finance, and politics, where analyzing customer feedback, market sentiment, or public opinion plays a crucial role.
+IMDB dataset
+A well-known dataset for sentiment analysis is the IMDB movie review dataset, which consists of 50,000 highly polarized reviews, evenly split between positive and negative sentiments. This dataset is widely used for training and evaluating sentiment classification models. The preprocessing pipeline typically includes TF-IDF vectorization, where a minimum document frequency threshold of five ensures that only commonly occurring words are considered. Labels are then one-hot encoded to facilitate compatibility with machine learning models.

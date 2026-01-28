@@ -1,0 +1,40 @@
+Fine-Tuning |fine-tuning, full fine-tuning, tuni|
+Fine-tuning involves adapting a pre-trained language model to a specific task by training it further on task-specific data. This process allows models to specialize in domain-specific tasks, improve accuracy, and optimize performance on small, focused datasets. Full fine-tuning updates all model parameters, leveraging the full capacity of the model, but it is computationally expensive and may lead to overfitting on too small datasets.
+
+Alternative Full Fine-Tuning Methods |fine-tuning, partial fine-tuning. tuni, efficient|
+Different fine-tuning techniques have been developed to improve efficiency and adapt models with fewer resources. 
+Parameter-efficient fine-tuning updates only a subset of parameters instead of the entire model. 
+Instruction fine-tuning aligns models with task-specific instructions or user queries. 
+Reinforcement Learning from Human Feedback (RLHF) combines supervised learning with reinforcement learning to improve user-aligned outputs.
+
+Parameter-Efficient Fine-Tuning |fine-tuning, Parameter-Efficient Fine-Tuning, PEFT, tuni|
+Parameter-Efficient Fine-Tuning (PEFT) enables the adaptation of large-scale pre-trained models in a computationally efficient way while requiring fewer learnable parameters. This method is crucial for large models, as full fine-tuning can be computationally expensive and require significant storage. Parameter-efficient fine-tuning is particularly useful for resource-constrained environments, such as edge devices or applications requiring frequent updates.
+
+Techniques for Parameter-Efficient Fine-Tuning |fine-tuning, Parameter-Efficient Fine-Tuning, LoRA, adapter, prefix tuning, param, tune, efficient|
+Several techniques have been developed to reduce the number of trainable parameters while maintaining model performance. 
+Low-rank adaptation (LoRA) modifies weight matrices by learning low-rank decompositions, reducing the number of parameters while preserving key information. 
+Adapters are small, trainable modules inserted into transformer layers while keeping the pre-trained model frozen. 
+Prefix tuning introduces trainable prefix vectors to guide the model’s attention, optimizing task-specific performance with minimal computational overhead.
+
+Low-Rank Adaptation |fine-tuning, LoRA, Low-rank adaptation, low, rank, matrices, param|
+Low-rank adaptation (LoRA) assumes that the modifications needed for task-specific tuning exist in a lower-dimensional subspace. Instead of updating the entire weight matrix, this method optimizes a small set of trainable low-rank matrices. These low-rank matrices are used to compute an update that is then applied to the original weights, without directly altering them. The base model 'W' remains unchanged, and weight updates are decomposed into compact matrices 'A x B' where the number of trainable parameters is significantly reduced compared to the full weight matrix, reducing computational costs while retaining essential knowledge. This decomposition introduces a minimal number of additional parameters, often less than one percent of the total, making it significantly more efficient than full fine-tuning. Once trained, these modified weights can be directly integrated with the original model, ensuring compatibility.
+
+Adapters for Task-Specific Fine-Tuning |fine-tuning, adapter, tuni,|
+Adapters are lightweight neural modules inserted between transformer layers, enabling models to specialize in specific tasks while keeping the core parameters frozen. Instead of updating the full network, only the small fully connected layers of the adapter modules are trained. This significantly reduces computational overhead while allowing the model to retain general-purpose knowledge learned during pre-training. Since the base model remains unchanged, adapters facilitate flexible adaptation without overwriting the general-purpose knowledge encoded in the original model.
+
+Prefix Tuning |fine-tuning, prefix tuning, prefix, tuni|
+Prefix tuning enhances model adaptability by introducing trainable prefix embeddings that modify how the model processes input tokens. Instead of altering the model’s internal weights, it appends a sequence of prefix vectors to the input, influencing attention mechanisms.
+As:
+Modified Input: [Prefix] + [InputTokens]
+Where:
+Prefix: A sequence of m trainable vectors of size d where d is the model's embedding dimensionality.
+InputTokens: The original token embeddings from the input sequence.
+These prefix embeddings are prepended to the key-value pairs in the attention layers, conditioning how the model attends to the input without modifying the core model parameters.
+During fine-tuning, only the prefix embeddings are updated while the rest of the model remains frozen. Backpropagation adjusts the prefix parameters to align the model’s outputs with task-specific requirements, ensuring efficient adaptation without extensive parameter updates. The length of the prefix, denoted by m, controls the trade-off between expressiveness and efficiency. Longer prefixes enable the model to capture more complex task-specific patterns but may increase memory consumption.
+This approach allows effective adaptation with minimal storage and computational costs. By optimizing a small set of additional parameters, prefix tuning maintains the knowledge embedded in the pre-trained model while tailoring its behavior for specific tasks.
+
+Instruction Fine-Tuning |fine-tuning, instruction fine-tuning, instruction-response pairs, tuni, instruct, response|
+Instruction fine-tuning is a specialized approach designed to improve a model’s ability to follow human instructions across various tasks.
+It refines a language model by training it on structured datasets consisting of instruction-response pairs. Each example in this dataset includes an instruction, which is a clear and human-readable prompt specifying a task, an optional context providing additional background information, and the expected response that the model should generate.
+The process leverages a pre-trained language model, which has already learned general linguistic patterns, and fine-tunes it with these task-specific instructions. During training, the model learns to recognize the intent behind each instruction and generate responses that are both contextually relevant and coherent. This improves the model’s ability to handle a wide variety of user inputs more effectively.
+The dataset used for fine-tuning often includes instructions from multiple domains and task types, allowing the model to generalize beyond the specific examples it has seen. This diversity ensures that the model remains flexible and can respond appropriately to novel instructions, enhancing its usability in real-world applications.

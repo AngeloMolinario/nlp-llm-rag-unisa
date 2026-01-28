@@ -1,0 +1,43 @@
+Text segmentation |text segmentation, segment|
+Text segmentation is the process of dividing a text into meaningful units. It can happen at various levels, in fact we have
+- Paragraph Segmentation: breaking a document into paragraphs
+- Sentence Segmentation: breaking a paragraph into sentences
+- Word Segmentation: breaking a sentence into words
+
+Tokenization |segment, token|
+Tokenization is a specialized form of text segmentation involving dividing text into smaller units called tokens, which can include words, punctuation, numbers, emojis, sub-words, or even multi-word phrases. Tokens serve as the foundational elements for most natural language processing (NLP) tasks.
+Simple tokenizers often use whitespace as a delimiter, but this approach is insufficient for languages without spaces between words or for handling punctuation and symbols. Advanced tokenizers employ rule-based or machine learning methods to accurately segment text.
+
+Token Normalization |normalization, token, standard, folding, stop, expression|
+Token normalization standardizes text to improve consistency and reduce noise. Common techniques include:
+- Case folding: Converting text to lowercase to treat words like "Tennis" and "tennis" as identical. While this improves matching, it can obscure distinctions between proper nouns and common words.
+- Stop word removal: Filtering out high-frequency words (e.g., "the," "and") that carry little semantic meaning. However, stop words can be important for tasks requiring syntactic or relational information.
+- Regular expressions: Handling whitespace variations, punctuation, and special characters during tokenization.
+
+One-hot vector |one, hot, one-hot, encoding|
+Let's consider a vocabulary that includes all the tokens we want to represent. A one-hot vector is a vector with a length equal to the size of the vocabulary, consisting of 0s in all positions except for a single 1, which uniquely identifies a specific word. One advantage of this representation is that no information is lost, making it possible to reconstruct the original document from a table of one-hot vectors. However, one-hot vectors are memory-intensive, especially for large vocabularies and even for short sentences.
+
+Bag of Words (BoW) Representation |one-hot vector, bag of words, overlap, similar, bow, one, hot|
+The Bag of Words (BoW) model represents text as a collection of tokens, disregarding grammar and word order but retaining frequency information. Each token in the vocabulary is mapped to a unique index, and a document is represented as a vector where each element corresponds to the presence or frequency of a token. As a result, some information is lost, and it is not possible to reconstruct the original text.
+One-hot encoding is a basic form of BoW. BoW addresses the memory-intensive problem by summing one-hot vectors for a document, creating a dense representation. A binary variant of BoW marks token presence (1 or 0) without considering frequency.
+BoW Overlap is a technique that measures similarity between texts by comparing their vector representations, often using the dot product, which highlights the number of common words between documents. However, BoW dot product comparison is case-sensitive, meaning that words with different capitalization are treated as distinct tokens. While BoW is simple and effective for certain tasks, it loses contextual and structural information, making it unsuitable for more complex NLP applications.
+
+Stemming and Lemmatization |stemming, stem, lemmatization, lemma|
+Stemming and lemmatization reduce words to their base forms, simplifying text analysis. Stemming removes suffixes to approximate a word's root, often resulting in non-dictionary forms (e.g., "Relating" to "relat"). While fast, stemming can produce inconsistent or incorrect stems. A simple stemming algorithm is to remove a list of suffixes from the given test. A more intelligent way is the porter stemmer algorithm that apply a series of rule to the text in order to obtain the final stem. it starts by removing s and es ending, than remove ed, ing, at, change y to i, remove nounifying endings like -ational, -ence, -able, remove the adjective endings, remove the stubborn e endings and lastly remove the double consonant ending.
+Lemmatization, on the other hand, uses linguistic rules and dictionaries to derive a word's canonical form (lemma). For example, "better" is lemmatized to "good." Lemmatization is more accurate but computationally heavier than stemming but requires to prior identify the part of speech (PoS) of the word.
+
+Part of Speech Tagging (PoS Tagging) |pos, lexical, grammatic, label|
+Part of Speech (PoS) tagging assigns grammatical labels (e.g., noun, verb, adjective) to tokens based on their context, addressing the ambiguity of natural language. PoS tagging is essential for tasks like lemmatization (where it is a requirement), syntactic parsing, and named entity recognition.
+Simple PoS taggers rely on dictionaries or rule-based approaches, while more advanced models use statistical or neural approaches to predict tags based on surrounding words. A basic statistical PoS model assigns a tag to the current word based on its statistical probability, considering the previous token and the possible tags for the current word. The dictionary provides all possible PoS labels for each word or token, and the selection is made from this set. Morphological analysis further enhances PoS tagging by examining word structure, such as inflectional endings, to improve accuracy.
+
+Introduction to spaCy and NLTK |spacy, nltk, token, stem, lemma, pos, ner, librar|
+NLTK (Natural Language Toolkit) and spaCy are popular Python libraries for NLP. NLTK provides a wide range of tools for tokenization, stemming, and PoS tagging.
+spaCy, a modern and efficient library, supports 25 languages and offers pre-trained models for tasks like tokenization, dependency parsing, and named entity recognition (NER). Its rule-based tokenizer handles complex cases like contractions and hyphenated words, while its NER system identifies entities such as people, organizations, and dates.
+
+spaCy Functionalities |spacy, token, stem, lemma, pos, ner, function, librar|
+spaCy's advanced features include:
+Token attributes: Access to linguistic properties like lemmas, PoS tags, and entity types.
+Sentence splitting: Automatic detection of sentence boundaries.
+Dependency parsing: Analyzing grammatical relationships between tokens.
+BoW with lemmatization: Reducing vocabulary size while preserving semantic information.
+Named Entity Recognition (NER): Identifying and classifying real-world entities in text.
