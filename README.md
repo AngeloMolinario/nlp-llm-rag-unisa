@@ -100,7 +100,7 @@ You can also change the embeddings and the llm by changing the name of the model
 
 ## 👥 Project Members (Group 1)
 
-- Angelo Molinario  
-- Antonio Sessa  
-- Massimiliano Ranauro  
-- Pietro Martano  
+*   [Angelo Molinario](https://github.com/amolinario3)
+*   [Antonio Sessa](https://github.com/Antuke)
+*   [Massimiliano Ranauro](https://github.com/MassimilianoRanauro)
+*   [Pietro Martano](https://github.com/pietroemme)
